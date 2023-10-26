@@ -1,0 +1,176 @@
+<div class="container">
+  <div class="row secondary-color">
+    <div class="col-md-12 text-center">
+      <h3 class="text-theme-primary">{{postHeader}}</h3>
+      <p class="mb-5">{{postHeader}}</p>
+    </div>
+    <div *ngIf="form">
+      <form class="col-md-12" [formGroup]="form" (submit)="onFormSubmit()">
+        <div class="row">
+          <div class="col-md-7">
+            <div class="card shadow-effect">
+              <div class="card-body">
+                <div class="form-group">
+                  <label> Title </label>
+                  <input
+                    type="text"
+                    [ngClass]="{
+                      'form-control': true,
+                      'is-invalid': frmctrl.title.touched && frmctrl.title.invalid
+                    }"
+                    (keyup)="onTitleChange($event)"
+                    formControlName="title"
+                  />
+                  <div>
+                    <div
+                      *ngIf="
+                        frmctrl.title.touched && frmctrl.title.errors?.required
+                      "
+                      class="alert alert-danger"
+                    >
+                      This Field Is Required
+                    </div>
+                    <div
+                      *ngIf="frmctrl.title.errors?.minlength"
+                      class="alert alert-danger"
+                    >
+                      Field Should Be 10 Characters Minimum
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label> Permalink </label>
+                  <input
+                    [value]="permalink"
+                    type="text"
+                    [ngClass]="{
+                      'form-control': true,
+                      'is-invalid':
+                        frmctrl.title.touched &&
+                        frmctrl.permalink.parent.value.title == ''
+                    }"
+                    formControlName="permalink"
+                  />
+                  <div>
+                    <div
+                      *ngIf="
+                        frmctrl.title.touched &&
+                        frmctrl.permalink.parent.value.title == ''
+                      "
+                      class="alert alert-danger"
+                    >
+                      This Field Is Required
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label> Excerpt </label>
+                  <textarea
+                    [ngClass]="{
+                      'form-control': true,
+                      'is-invalid':
+                        frmctrl.excerpt.touched && frmctrl.excerpt.invalid
+                    }"
+                    cols="30"
+                    rows="10"
+                    formControlName="excerpt"
+                  ></textarea>
+                  <div>
+                    <div
+                      *ngIf="
+                        frmctrl.excerpt.touched &&
+                        frmctrl.excerpt.errors?.required
+                      "
+                      class="alert alert-danger"
+                    >
+                      This Field Is Required
+                    </div>
+                    <div
+                      *ngIf="frmctrl.excerpt.errors?.minlength"
+                      class="alert alert-danger"
+                    >
+                      Field Should Be 50 Characters Minimum
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="col-md-5">
+            <div class="form-group">
+              <label> Please Select A Post Category</label>
+              <select class="form-control" formControlName="category">
+                <option value="">Please Select A Post Category</option>
+                <option
+                  *ngFor="let loop of categoryList"
+                  value="{{ loop.data.category }}-{{ loop.id }}"
+                >
+                  {{ loop.data.category }}
+                </option>
+              </select>
+              <div
+                *ngIf="
+                  frmctrl.category.touched && frmctrl.category.errors?.required
+                "
+                class="alert alert-danger"
+              >
+                This Field Is Required
+              </div>
+            </div>
+            <div class="form-group">
+              <label> Post Image </label>
+              <img [src]="imgSrc" class="form-control img-preview" />
+              <input
+                type="file"
+                class="form-control"
+                accept="Image/*"
+                (change)="imgPreview($event)"
+                formControlName="postImg"
+              />
+              <div
+                *ngIf="
+                  frmctrl.postImg.touched && frmctrl.postImg.errors?.required
+                "
+                class="alert alert-danger"
+              >
+                This Field Is Required
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-3 mb-5">
+          <div class="col-md-12">
+            <div class="card shadow-effect">
+              <div class="card-body">
+                <div class="form-group">
+                  <label> Content </label>
+                  <angular-editor
+                    placeholder="Add Your Content Here"
+                    formControlName="content"
+                  ></angular-editor>
+                  <div
+                    *ngIf="
+                      frmctrl.content.touched && frmctrl.content.errors?.required
+                    "
+                    class="alert alert-danger"
+                  >
+                    This Field Is Required
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 text-center mt-5">
+            <button class="btn btn-theme" [disabled]="form.invalid">
+              Save Post
+            </button>
+            <button routerLink="/posts" class="btn btn-theme ml-3">
+              Back To Post
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    </div>
+  </div>

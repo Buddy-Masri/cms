@@ -1,0 +1,83 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-center bg-secondary-theme p-5 shadow-effect">
+      <h3 class="text-theme-primary">{{ formStatus }}</h3>
+      <p>You Can Manage Your Categories Below</p>
+      <form
+        class="form-inline mt-5"
+        #categoryForm="ngForm"
+        (ngSubmit)="onSubmit(categoryForm)"
+      >
+        <div class="form-group col-md-10">
+          <input
+            type="text"
+            class="form-control shadow-effect"
+            placeholder="Add a New Category"
+            name="category"
+            required
+            [(ngModel)]="inputValue"
+            #newCategory="ngModel"
+          />
+          <!-- <div
+            *ngIf="newCategory.touched && newCategory.invalid"
+            class="alert alert-danger col"
+          >
+            Category Field is Required
+          </div> -->
+        </div>
+
+        <div class="col-md-2">
+          <button
+            class="btn btn-info btn-theme py-0"
+            [disabled]="categoryForm.invalid"
+          >
+            {{ formStatus }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="row mt-5 mb-5 d-flex justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-effect">
+        <div class="card-body">
+          <table class="table row-border hover">
+            <thead>
+              <tr>
+                <th>No.</th>
+                <th>Categories</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let loop of categoryArray; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ loop.data.category }}</td>
+                <td>
+                  <button
+                    (click)="onEdit(loop.data.category, loop.id)"
+                    class="btn btn-sm btn-warning"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    (click)="onDelete(loop.id)"
+                    class="btn btn-sm btn-danger ml-2"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-center mb-5">
+    <button routerLink="/dashboard" class="btn btn-theme">
+      Back to Dashboard
+    </button>
+  </div>
+</div>

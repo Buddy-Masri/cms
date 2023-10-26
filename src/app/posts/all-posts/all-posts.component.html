@@ -1,0 +1,79 @@
+<div class="container mb-5">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card bg-secondary-theme shadow-effect">
+        <div class="card-body text-center">
+          <h3>All Blog Posts</h3>
+          <p>Manage Your Posts</p>
+          <button routerLink="/posts/new" class="btn btn-theme">
+            Add New Post
+          </button>
+          <button routerLink="/dashboard" class="btn btn-theme ml-3">
+            Back to Dashboard
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card shadow-effect mt-5">
+        <div class="card-body">
+          <table class="table table-responsive hover row-border">
+            <thead>
+              <tr>
+                <th>No.</th>
+                <th>Post Image</th>
+                <th>Title</th>
+                <!-- <th>Excerpt</th> -->
+                <th>Category</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let loop of postData; let i = index">
+                <td width="10">{{ i + 1 }}</td>
+                <td width="200">
+                  <img
+                    src="{{ loop.data.postImgPath }}"
+                    class="img img-fluid"
+                  />
+                </td>
+                <td width="200">{{ loop.data.title }}</td>
+                <!-- <td width="300">{{ loop.data.excerpt }}</td> -->
+                <td>{{ loop.data.category.category }}</td>
+                <td>{{ loop.data.createdAt.toDate() | date }}</td>
+                <td>
+                  <button
+                    class="btn btn-sm btn-warning ml-2 mb-2"
+                    routerLink="/posts/new" [queryParams]="{id: loop.id}"
+                  >
+                    Edit
+                  </button>
+                  <button 
+                  class="btn btn-danger btn-sm ml-2 mb-2"
+                  (click)="onDelete(loop.id, loop.data.postImgPath)">
+                    Delete
+                  </button>
+                  <button 
+                  *ngIf="!loop.data.isFeatured"
+                  class="btn btn-success btn-sm ml-2 mb-2"
+                  (click)="feature(loop.id)">
+                    Mark As Featured
+                  </button>
+                  <button 
+                  *ngIf="loop.data.isFeatured"
+                  class="btn btn-info btn-sm ml-2 mb-2"
+                  (click)="unfeature(loop.id)">
+                    Remove Featured
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

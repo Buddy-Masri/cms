@@ -1,0 +1,97 @@
+<div *ngIf="!state" class="container">
+  <div class="row flex-d justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-effect bg-secondary-theme px-3 mb-5 mb-2">
+        <div class="card-head mt-5 mb-4 text-center">
+          <h3 class="text-theme-primary">Login</h3>
+          <small>Please Enter Your Email and Password</small>
+        </div>
+        <div class="card-body">
+          <form #form="ngForm">
+            <div class="form-group">
+              <input
+                type="email"
+                placeholder="Email"
+                required
+                email
+                ngModel
+                name="email"
+                #email="ngModel"
+                [ngClass]="{
+                  'is-invalid': email.errors && email.touched,
+                  'form-control': true,
+                  
+                }"
+              />
+              <div
+                *ngIf="email.errors?.required && email.touched"
+                class="alert alert-danger"
+              >
+                Field Is Required
+              </div>
+              <div
+                *ngIf="email.errors?.email && email.touched"
+                class="alert alert-danger"
+              >
+                Invalid Email Address
+              </div>
+            </div>
+            <div class="form-group">
+              <input
+                type="password"
+                placeholder="Password"
+                name="password"
+                required
+                ngModel
+                #password="ngModel"
+                (keyup)="(password)"
+                [ngClass]="{
+                  'is-invalid': password.errors && password.touched,
+                  'form-control': true
+                }"
+              />
+              <div
+                class="alert alert-danger"
+                *ngIf="password.errors?.required && password.touched"
+              >
+                Field Is Required
+              </div>
+            </div>
+            <div class="row flex-d justify-content-center">
+              <button
+                [disabled]="form.invalid"
+                class=" btn btn-theme mt-4 mb-4"
+                style="width: 100px"
+                (click)="onLogin(form.value)"
+              >
+                Login
+              </button>
+              <button
+                class="btn btn-theme mt-4 mb-4 ml-2"
+                style="width: 100px"
+                routerLink="/register"
+              >
+                Register
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="state" class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card shadow-effect py-5 bg-secondary-theme flex-column align-items-center">
+        <div class="card-head text-center mt-4">
+          <h3 class="text-theme-primary">User Logged In</h3>
+        </div>
+        <div class="card-body text-center">
+            <h5 class="site-email py-3">{{email}}</h5>
+            <button class="btn btn-theme mt-3" (click)="onLogout()">Log-out</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

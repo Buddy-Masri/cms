@@ -1,0 +1,34 @@
+[
+    {
+        "type": "Directory",
+        "name": "/Users/Abed/Desktop/angular1/cms/src/app/pages/home",
+        "parent_id": null,
+        "workspaceRoot": "/Users/Abed/Desktop/angular1/cms",
+        "workspacePath": "src/app/pages/home",
+        "id": "9bsREZd8aqT1oYDj"
+    },
+    {
+        "type": "Directory",
+        "name": "/Users/Abed/Desktop/angular1/cms/src/app/auth/login",
+        "parent_id": null,
+        "workspaceRoot": "/Users/Abed/Desktop/angular1/cms",
+        "workspacePath": "src/app/auth/login",
+        "id": "biy5L7UHDwBuGAJ9"
+    },
+    {
+        "type": "File",
+        "name": "/Users/Abed/Desktop/angular1/cms/src/app/subscribers/subscribers.component.html",
+        "parent_id": null,
+        "workspaceRoot": "/Users/Abed/Desktop/angular1/cms",
+        "workspacePath": "src/app/subscribers/subscribers.component.html",
+        "id": "G9WsD6ykNPzUdCVb"
+    },
+    {
+        "type": "File",
+        "name": "/Users/Abed/Desktop/angular1/cms/src/app/subscribers/subscribers.component.ts",
+        "parent_id": null,
+        "workspaceRoot": "/Users/Abed/Desktop/angular1/cms",
+        "workspacePath": "src/app/subscribers/subscribers.component.ts",
+        "id": "ZfDo5PuywKIsn3xO"
+    }
+]

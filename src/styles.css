@@ -1,1 +1,92 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~ngx-toastr/toastr";
+@import "node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+:root {
+  --primary-color: #313131;
+  --secondary-color: #dadada;
+  --body-text-color: #596392;
+  --navbar-footer-color: #f9f9f9;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  color: var(--body-text-color);
+  background-color:var(--navbar-footer-color) ;
+}
+
+.site-logo {
+  color: white;
+}
+
+.site-email {
+  padding: 5px 20px;
+  border-radius: 20px;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+
+.nav-link {
+  color: var(--primary-color);
+}
+
+.shadow-effect {
+  border: none;
+  box-shadow: 0px 0px 33px -10px rgba(71, 114, 254, 0.3);
+}
+
+.btn-theme {
+  height: 50px;
+  border: none;
+  background-color: var(--primary-color);
+  color: white;
+  transition: 0.2s;
+}
+
+.btn-theme:hover{
+  background-color: red;
+  color: white;
+}
+
+.btn-theme:active{
+  background-color: black;
+}
+
+.btn-theme:disabled{
+  background-color: #757575;
+  color: white;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  height: 50px;
+  padding-left: 20px;
+  width: 100%!important;
+}
+
+.about-container {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  padding: 25px;
+}
+
+.bg-theme {
+  background-color: var(--primary-color);
+
+}
+
+.bg-secondary-theme {
+  background-color: var(--secondary-color);
+}
+
+.text-theme-primary {
+  color: var(--primary-color);
+}
+
+.shadow-effect {
+  border: none;
+  box-shadow: 0px 0px 33px -10px rgba(71, 114, 254, 0.3);
+}
